@@ -25,8 +25,15 @@ async function seedAdmins() {
   for (const account of defaults) {
     const exists = await users.exists({ where: { email: account.email } });
     if (!exists) {
+      let referralCode = account.referralCode;
+      let suffix = 1;
+      while (await users.exists({ where: { referralCode } })) {
+        referralCode = `${account.referralCode}${suffix}`;
+        suffix += 1;
+      }
       await users.save(users.create({
         ...account,
+        referralCode,
         passwordHash: await bcrypt.hash('ChangeMe123!', 12),
         status: UserStatus.ACTIVE,
         emailVerified: true,
