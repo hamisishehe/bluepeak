@@ -5,7 +5,7 @@ import { api } from '@/lib/api/client';
 import { DataTable, type DataRow } from './data-table';
 
 const columns: Record<string, string[]> = {
-  users: ['email', 'role', 'status', 'availableBalance', 'investmentBalance'],
+  users: ['id', 'email', 'role', 'status', 'availableBalance', 'investmentBalance'],
   deposits: ['id', 'userId', 'amount', 'paymentNetwork', 'status'],
   investments: ['id', 'userId', 'principalAmount', 'weeklyProfitAmount', 'status'],
   profits: ['id', 'userId', 'profitAmount', 'status', 'scheduledDate'],

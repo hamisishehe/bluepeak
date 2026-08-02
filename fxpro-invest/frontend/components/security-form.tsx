@@ -23,7 +23,7 @@ export function SecurityForm() {
       });
       setMessage('Password changed. Please sign in again.');
       clearAuth();
-      setTimeout(() => { window.location.href = '/login'; }, 1200);
+      setTimeout(() => { window.location.href = window.location.pathname.startsWith('/admin') ? '/admin/login' : '/login'; }, 1200);
     } catch (err) {
       setError(apiErrorMessage(err));
     }
@@ -46,4 +46,3 @@ export function SecurityForm() {
     </section>
   );
 }
-
