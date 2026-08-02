@@ -9,3 +9,14 @@ services:
     environment:
       NEXT_PUBLIC_SITE_URL: https://bluepeak-capital.online
       NEXT_PUBLIC_API_URL: https://bluepeak-capital.online
+
+  seed:
+    build: ./backend
+    profiles: ["seed"]
+    env_file: .env.example
+    environment:
+      DATABASE_URL: postgres://fxpro:fxpro_password@postgres:5432/fxpro_invest
+    command: sh -c "npm run migration:run && npm run seed:users"
+    depends_on:
+      postgres:
+        condition: service_healthy
