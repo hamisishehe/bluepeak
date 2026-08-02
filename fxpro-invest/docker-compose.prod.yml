@@ -1,0 +1,10 @@
+services:
+  backend:
+    environment:
+      FRONTEND_URL: https://bluepeak-capital.online
+      FRONTEND_URLS: https://bluepeak-capital.online
+
+  frontend:
+    environment:
+      NEXT_PUBLIC_SITE_URL: https://bluepeak-capital.online
+      NEXT_PUBLIC_API_URL: https://bluepeak-capital.online
