@@ -6,7 +6,9 @@ import { Roles } from '../common/decorators/roles.decorator';
 import { UserRole } from '../common/enums/user-role.enum';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../common/guards/roles.guard';
+import { AdminCreateUserDto } from './dto/admin-create-user.dto';
 import { AdminResetPasswordDto } from './dto/admin-reset-password.dto';
+import { AdminUpdateUserDto } from './dto/admin-update-user.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { UsersService } from './users.service';
@@ -22,6 +24,18 @@ export class UsersController {
   @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Post()
+  @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
+  create(@Body() dto: AdminCreateUserDto) {
+    return this.usersService.createUser(dto);
+  }
+
+  @Patch(':id')
+  @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
+  update(@CurrentUserDecorator() admin: CurrentUser, @Param('id') id: string, @Body() dto: AdminUpdateUserDto) {
+    return this.usersService.updateUser(admin.id, id, dto);
   }
 
   @Patch(':id/block')

@@ -4,6 +4,8 @@ import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { UserRole } from '../common/enums/user-role.enum';
 import { UserStatus } from '../common/enums/user-status.enum';
+import { AdminCreateUserDto } from './dto/admin-create-user.dto';
+import { AdminUpdateUserDto } from './dto/admin-update-user.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { User } from './user.entity';
 
@@ -74,6 +76,44 @@ export class UsersService {
     return { message: 'Password changed successfully' };
   }
 
+  async createUser(dto: AdminCreateUserDto) {
+    const email = dto.email.trim().toLowerCase();
+    const exists = await this.users.exists({ where: { email } });
+    if (exists) throw new BadRequestException('Email is already registered');
+    const user = await this.users.save(this.users.create({
+      email,
+      fullName: dto.fullName,
+      phoneNumber: dto.phoneNumber || null,
+      passwordHash: await bcrypt.hash(dto.password, 12),
+      role: UserRole.USER,
+      status: dto.status ?? UserStatus.ACTIVE,
+      referralCode: await this.createReferralCode(),
+      emailVerified: true,
+      availableBalance: dto.availableBalance ?? '0.00',
+      investmentBalance: dto.investmentBalance ?? '0.00',
+      mustChangePassword: true,
+    }));
+    return this.findProfile(user.id);
+  }
+
+  async updateUser(adminId: string, userId: string, dto: AdminUpdateUserDto) {
+    const user = await this.findAdminTarget(adminId, userId);
+    if (user.role !== UserRole.USER) throw new ForbiddenException('Administrator accounts cannot be edited here');
+    if (dto.email !== undefined) {
+      const email = dto.email.trim().toLowerCase();
+      const emailOwner = await this.users.findOneBy({ email });
+      if (emailOwner && emailOwner.id !== user.id) throw new BadRequestException('Email is already registered');
+      user.email = email;
+    }
+    if (dto.fullName !== undefined) user.fullName = dto.fullName;
+    if (dto.phoneNumber !== undefined) user.phoneNumber = dto.phoneNumber || null;
+    if (dto.status !== undefined) user.status = dto.status;
+    if (dto.availableBalance !== undefined) user.availableBalance = dto.availableBalance;
+    if (dto.investmentBalance !== undefined) user.investmentBalance = dto.investmentBalance;
+    await this.users.save(user);
+    return this.findProfile(user.id);
+  }
+
   async blockUser(adminId: string, userId: string) {
     const user = await this.findAdminTarget(adminId, userId);
     if (user.role !== UserRole.USER) throw new ForbiddenException('Administrator accounts cannot be blocked here');
@@ -111,5 +151,15 @@ export class UsersService {
     const user = await this.users.findOneBy({ id: userId });
     if (!user) throw new NotFoundException('User not found');
     return user;
+  }
+
+  private async createReferralCode() {
+    let code = `BP${Date.now().toString(36).toUpperCase()}`;
+    let suffix = 1;
+    while (await this.users.exists({ where: { referralCode: code } })) {
+      code = `BP${Date.now().toString(36).toUpperCase()}${suffix}`;
+      suffix += 1;
+    }
+    return code;
   }
 }
