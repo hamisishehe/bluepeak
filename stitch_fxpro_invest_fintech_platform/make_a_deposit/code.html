@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXPRO INVEST | Make a Deposit</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "surface-tint": "#565e74",
+                        "surface-container-low": "#eff4ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-container": "#7c839b",
+                        "error": "#ba1a1a",
+                        "on-background": "#0b1c30",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "surface": "#f8f9ff",
+                        "primary-container": "#131b2e",
+                        "surface-container": "#e5eeff",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-container": "#316bf3",
+                        "tertiary-container": "#002113",
+                        "on-secondary-container": "#fefcff",
+                        "on-surface-variant": "#45464d",
+                        "surface-dim": "#cbdbf5",
+                        "surface-variant": "#d3e4fe",
+                        "primary": "#000000",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#0b1c30",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary-fixed": "#dbe1ff",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed": "#00174b",
+                        "on-tertiary-container": "#009668",
+                        "on-primary": "#ffffff",
+                        "outline": "#76777d",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-fixed": "#002113",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "secondary": "#0051d5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "32px",
+                        "sidebar-width": "280px",
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "container-max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "numeric-data": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "numeric-data": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface dark:bg-inverse-surface shadow-sm h-16">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max-width mx-auto h-full">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface">FXPRO INVEST</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors font-body-md" href="#">Dashboard</a>
+<a class="text-secondary font-bold border-b-2 border-secondary font-body-md" href="#">Investments</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors font-body-md" href="#">Transactions</a>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary" data-icon="help">help</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a financial executive in a high-rise office. Soft daylight illuminates the subject, with a blurred cityscape of glass skyscrapers in the background. The aesthetic is clean, corporate, and high-trust, featuring sharp focus on the subject and a polished, modern finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFm2PU0rR_Vh1mQeIpFAP6Iu5cirgDNtPbJMCDNIxt5YKJwInVy9-dH6GzPgPq4ZovHqUGIg1aMOgUiYTmidi2oeKuzYNmy6Yty_KzEc0jh_seEJFXaJIsTJs-AA3oTHGQJmMk4H3dymAprNlAuMnL0Ab-vA0D8RIR2Hq0q3Jj-28-f1l1qLOkV5SHpXmmquOLYv-N1EGhOaAJEoM7DhvB-j4VWEabBABq2273QoQT-HW9DqYukHA7"/>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width flex flex-col py-6 bg-primary-container dark:bg-on-primary-fixed shadow-md z-40 hidden md:flex">
+<div class="px-6 mb-10">
+<div class="font-headline-md text-headline-md font-bold text-on-primary dark:text-primary-fixed">FXPRO</div>
+<div class="font-label-md text-label-md opacity-70 text-on-primary-fixed">Investor Portal</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-primary-container/70 px-6 py-3 hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container/20 border-l-4 border-secondary-container text-on-secondary-container px-6 py-3" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Investments</span>
+</a>
+<a class="flex items-center gap-3 text-on-primary-container/70 px-6 py-3 hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span>Transactions</span>
+</a>
+<a class="flex items-center gap-3 text-on-primary-container/70 px-6 py-3 hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group_add">group_add</span>
+<span>Referrals</span>
+</a>
+<div class="pt-10 px-6">
+<button class="w-full py-3 px-4 bg-secondary-container text-on-secondary-container rounded-lg font-label-md hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    New Investment
+                </button>
+</div>
+</nav>
+<div class="mt-auto px-6 space-y-2">
+<a class="flex items-center gap-3 text-on-primary-container/70 px-4 py-2 hover:bg-primary/10 transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="headset_mic">headset_mic</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 text-on-primary-container/70 px-4 py-2 hover:bg-primary/10 transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-sidebar-width pt-24 pb-12 px-4 md:px-margin-desktop">
+<div class="max-w-3xl mx-auto">
+<!-- Header Section -->
+<header class="mb-10 text-center md:text-left">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Secure Investment Deposit</h1>
+<p class="text-on-surface-variant font-body-md">Complete the 5-step process to fund your investment portfolio.</p>
+</header>
+<!-- Progress Tracker -->
+<div class="mb-12 relative">
+<div class="flex justify-between items-center w-full relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-secondary text-on-secondary font-bold shadow-md transition-all" id="step-node-1">1</div>
+<span class="font-label-md text-label-md text-secondary">Amount</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-outline font-bold transition-all" id="step-node-2">2</div>
+<span class="font-label-md text-label-md text-outline">Network</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-outline font-bold transition-all" id="step-node-3">3</div>
+<span class="font-label-md text-label-md text-outline">Pay</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-outline font-bold transition-all" id="step-node-4">4</div>
+<span class="font-label-md text-label-md text-outline">Proof</span>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-outline font-bold transition-all" id="step-node-5">5</div>
+<span class="font-label-md text-label-md text-outline">Review</span>
+</div>
+</div>
+<!-- Progress Line Background -->
+<div class="absolute top-5 left-0 w-full h-[2px] bg-surface-container-high -z-0"></div>
+<!-- Progress Line Active -->
+<div class="absolute top-5 left-0 h-[2px] bg-secondary transition-all duration-500 w-0 -z-0" id="progress-bar"></div>
+</div>
+<!-- Wizard Content Card -->
+<div class="glass-panel rounded-xl shadow-md p-8 md:p-12 relative overflow-hidden">
+<form id="deposit-wizard" onsubmit="event.preventDefault();">
+<!-- STEP 1: AMOUNT -->
+<div class="step-transition" id="step-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Enter Investment Amount</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Amount (USD)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface font-bold text-headline-md">$</span>
+<input class="w-full pl-10 pr-4 py-4 bg-surface rounded-lg border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary transition-all text-headline-md font-bold text-on-surface" id="input-amount" min="1000" placeholder="1,000" type="number"/>
+</div>
+<p class="text-body-sm text-on-surface-variant italic">Minimum deposit required: $1,000.00 USD</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low flex gap-4 items-start">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+<div class="text-body-sm text-on-surface-variant">
+                                    Your investment principal is protected and insured under the FXPRO Guarantee program for all deposits exceeding $5,000.
+                                </div>
+</div>
+</div>
+</div>
+<!-- STEP 2: NETWORK -->
+<div class="step-transition hidden" id="step-2">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Select Payment Network</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="network" type="radio" value="BEP20"/>
+<div class="p-6 rounded-xl border-2 border-outline-variant bg-surface hover:border-secondary-container transition-all peer-checked:border-secondary peer-checked:bg-secondary/5 h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-[#F3BA2F] rounded-full flex items-center justify-center text-white font-bold">B</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:bg-secondary">
+<div class="w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+<h4 class="font-bold text-lg mb-1">BNB Smart Chain</h4>
+<p class="text-body-sm text-on-surface-variant">Network: BEP20</p>
+<p class="text-body-sm text-secondary font-bold mt-2">Fastest Confirmation</p>
+</div>
+</label>
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="network" type="radio" value="TRC20"/>
+<div class="p-6 rounded-xl border-2 border-outline-variant bg-surface hover:border-secondary-container transition-all peer-checked:border-secondary peer-checked:bg-secondary/5 h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-[#EF0027] rounded-full flex items-center justify-center text-white font-bold">T</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:bg-secondary">
+<div class="w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+<h4 class="font-bold text-lg mb-1">TRON Network</h4>
+<p class="text-body-sm text-on-surface-variant">Network: TRC20</p>
+<p class="text-body-sm text-secondary font-bold mt-2">Low Transaction Fees</p>
+</div>
+</label>
+</div>
+<div class="mt-8 p-4 bg-error-container/30 rounded-lg border border-error/20 flex gap-4">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<div class="text-body-sm text-on-error-container">
+<strong>CRITICAL WARNING:</strong> Ensure you select the correct network. Sending funds via the wrong network will result in permanent loss of assets. FXPRO cannot recover misrouted funds.
+                            </div>
+</div>
+</div>
+<!-- STEP 3: PAYMENT INSTRUCTIONS -->
+<div class="step-transition hidden" id="step-3">
+<div class="text-center mb-8">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Send Payment</h3>
+<p class="text-on-surface-variant">Send exactly <span class="font-bold text-on-surface" id="display-amount">$1,000.00</span> USDT (<span id="display-network">BEP20</span>)</p>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start justify-center">
+<!-- QR Code Placeholder -->
+<div class="p-4 bg-white rounded-xl shadow-sm border border-outline-variant w-48 h-48 flex items-center justify-center shrink-0">
+<img class="w-full h-full opacity-80" data-alt="A clean, minimalist high-resolution QR code generated for a luxury fintech app. The QR code is perfectly centered on a white, slightly textured paper background with soft ambient shadows. The overall aesthetic is professional, modern, and high-trust, utilizing a crisp black and white contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQV2HQavwie_Ap2ND7makgZ6nkyxofbhLzYS-UNeG3yBCVoO_HTVebOm7vBhjbNv5HINbcf-CnpDP_1EseF9zPcRRYwmXXEDmjbYV8-B0JAm1p9KL0OsEakd6fMTqOgXNXGeehbluoVfyeqC1w2Rg-TbyOnyup8iYqIzA4PuzOhNiBW_5VBbE2O_GSg7Lua9x_AtrsgWvjG1QzvhoyIUyLuZ3kvhuQSQ1_frrvGOCeG9oO3nKFMMCo"/>
+</div>
+<div class="flex-1 w-full space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">WALLET ADDRESS</label>
+<div class="flex gap-2">
+<div class="flex-1 p-4 bg-surface-container-low rounded-lg font-mono text-sm break-all border border-outline-variant text-on-surface">
+                                            0x71C7656EC7ab88b098defB751B7401B5f6d8976F
+                                        </div>
+<button class="p-4 bg-secondary text-on-secondary rounded-lg hover:opacity-90 transition-all flex items-center justify-center" onclick="copyToClipboard()" title="Copy Address">
+<span class="material-symbols-outlined" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<div class="text-body-sm text-secondary font-bold h-4 transition-opacity opacity-0" id="copy-status">Address copied to clipboard!</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="timer">timer</span>
+<span>Payment must be completed within 60 minutes.</span>
+</div>
+<div class="flex items-center gap-3 text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="verified_user">verified_user</span>
+<span>Awaiting 3 network confirmations for auto-verification.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 4: PROOF OF PAYMENT -->
+<div class="step-transition hidden" id="step-4">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Confirm Your Transfer</h3>
+<div class="space-y-8">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Transaction ID (TXID) / Hash</label>
+<input class="w-full px-4 py-3 bg-surface rounded-lg border border-outline-variant focus:border-secondary transition-all" placeholder="Enter the transaction hash from your wallet" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Proof of Transfer (Screenshot)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-10 flex flex-col items-center justify-center bg-surface hover:bg-surface-container-low transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-outline mb-4 group-hover:text-secondary" data-icon="cloud_upload">cloud_upload</span>
+<p class="text-body-md font-bold mb-1">Click to upload or drag & drop</p>
+<p class="text-body-sm text-on-surface-variant">JPG, PNG or PDF (Max 5MB)</p>
+<input class="hidden" type="file"/>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 5: REVIEW -->
+<div class="step-transition hidden" id="step-5">
+<div class="text-center mb-8">
+<div class="w-20 h-20 bg-secondary-container/20 rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="rule">rule</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Final Verification</h3>
+<p class="text-on-surface-variant">Please review your deposit details before submission.</p>
+</div>
+<div class="bg-surface rounded-xl overflow-hidden border border-outline-variant">
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant">
+<span class="text-on-surface-variant">Deposit Amount</span>
+<span class="font-numeric-data text-headline-md text-on-surface" id="review-amount">$1,000.00</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant">
+<span class="text-on-surface-variant">Payment Method</span>
+<span class="font-bold text-on-surface">USDT</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant">
+<span class="text-on-surface-variant">Network</span>
+<span class="font-bold text-secondary" id="review-network">BEP20</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-on-surface-variant">Processing Time</span>
+<span class="text-on-surface">15-30 Minutes</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex items-start gap-3">
+<input class="mt-1 rounded text-secondary border-outline-variant focus:ring-secondary" id="confirm-terms" type="checkbox"/>
+<label class="text-body-sm text-on-surface-variant" for="confirm-terms">
+                                I confirm that I have sent the correct amount via the selected network. I understand that misrouted funds cannot be recovered.
+                            </label>
+</div>
+</div>
+<!-- CTA BUTTONS -->
+<div class="mt-12 flex flex-col md:flex-row gap-4">
+<button class="flex-1 py-4 px-6 rounded-lg border border-outline-variant font-bold text-on-surface hover:bg-surface-container transition-all flex items-center justify-center gap-2 invisible" id="prev-btn" onclick="prevStep()">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                            Back
+                        </button>
+<button class="flex-[2] py-4 px-6 rounded-lg bg-secondary text-on-secondary font-bold hover:opacity-90 shadow-md transition-all flex items-center justify-center gap-2" id="next-btn" onclick="nextStep()">
+                            Next Step
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Footer Help -->
+<div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="lock" style="font-size: 16px;">lock</span>
+                    Secure 256-bit SSL Encrypted Transaction
+                </div>
+<div class="flex gap-6">
+<a class="hover:text-secondary transition-colors underline decoration-outline-variant" href="#">Deposit Policy</a>
+<a class="hover:text-secondary transition-colors underline decoration-outline-variant" href="#">Network Guide</a>
+</div>
+</div>
+</div>
+</main>
+<script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function updateProgress() {
+            // Update node styles
+            for (let i = 1; i <= totalSteps; i++) {
+                const node = document.getElementById(`step-node-${i}`);
+                const label = node.nextElementSibling;
+                
+                if (i < currentStep) {
+                    node.innerHTML = '<span class="material-symbols-outlined">check</span>';
+                    node.classList.remove('bg-surface-container', 'text-outline', 'bg-secondary', 'text-on-secondary');
+                    node.classList.add('bg-secondary', 'text-on-secondary');
+                    label.classList.remove('text-outline', 'text-secondary');
+                    label.classList.add('text-secondary');
+                } else if (i === currentStep) {
+                    node.innerHTML = i;
+                    node.classList.remove('bg-surface-container', 'text-outline', 'bg-secondary', 'text-on-secondary');
+                    node.classList.add('bg-secondary', 'text-on-secondary', 'ring-4', 'ring-secondary/20');
+                    label.classList.remove('text-outline', 'text-secondary');
+                    label.classList.add('text-secondary', 'font-bold');
+                } else {
+                    node.innerHTML = i;
+                    node.classList.remove('bg-secondary', 'text-on-secondary', 'ring-4', 'ring-secondary/20');
+                    node.classList.add('bg-surface-container', 'text-outline');
+                    label.classList.remove('text-outline', 'text-secondary', 'font-bold');
+                    label.classList.add('text-outline');
+                }
+            }
+
+            // Update line
+            const progressBar = document.getElementById('progress-bar');
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Button visibility
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (currentStep === 1) prevBtn.classList.add('invisible');
+            else prevBtn.classList.remove('invisible');
+
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = 'Complete Deposit <span class="material-symbols-outlined">check_circle</span>';
+                nextBtn.classList.add('bg-primary-container');
+            } else {
+                nextBtn.innerHTML = 'Next Step <span class="material-symbols-outlined">arrow_forward</span>';
+                nextBtn.classList.remove('bg-primary-container');
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // Validation Logic
+                if (currentStep === 1) {
+                    const amount = document.getElementById('input-amount').value;
+                    if (!amount || amount < 1000) {
+                        alert("Please enter a minimum of $1,000");
+                        return;
+                    }
+                    document.getElementById('display-amount').innerText = '$' + Number(amount).toLocaleString();
+                    document.getElementById('review-amount').innerText = '$' + Number(amount).toLocaleString();
+                }
+
+                if (currentStep === 2) {
+                    const network = document.querySelector('input[name="network"]:checked');
+                    if (!network) {
+                        alert("Please select a network");
+                        return;
+                    }
+                    document.getElementById('display-network').innerText = network.value;
+                    document.getElementById('review-network').innerText = network.value;
+                }
+
+                if (currentStep === 5) {
+                    const terms = document.getElementById('confirm-terms').checked;
+                    if (!terms) {
+                        alert("Please confirm the deposit terms");
+                        return;
+                    }
+                    alert("Deposit transaction submitted for verification!");
+                    return;
+                }
+
+                document.getElementById(`step-${currentStep}`).classList.add('hidden');
+                currentStep++;
+                document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step-${currentStep}`).classList.add('hidden');
+                currentStep--;
+                document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function copyToClipboard() {
+            const status = document.getElementById('copy-status');
+            status.classList.remove('opacity-0');
+            setTimeout(() => status.classList.add('opacity-0'), 3000);
+        }
+
+        // Initialize
+        updateProgress();
+    </script>
+</body></html>

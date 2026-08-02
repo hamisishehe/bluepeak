@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXPRO INVEST | Professional Investment Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#bec6e0",
+                    "surface-tint": "#565e74",
+                    "surface-container-low": "#eff4ff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-container": "#7c839b",
+                    "error": "#ba1a1a",
+                    "on-background": "#0b1c30",
+                    "on-secondary-fixed-variant": "#003ea8",
+                    "surface": "#f8f9ff",
+                    "primary-container": "#131b2e",
+                    "surface-container": "#e5eeff",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-container": "#316bf3",
+                    "tertiary-container": "#002113",
+                    "on-secondary-container": "#fefcff",
+                    "on-surface-variant": "#45464d",
+                    "surface-dim": "#cbdbf5",
+                    "surface-variant": "#d3e4fe",
+                    "primary": "#000000",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#0b1c30",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary": "#000000",
+                    "inverse-on-surface": "#eaf1ff",
+                    "secondary-fixed": "#dbe1ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-secondary-fixed": "#00174b",
+                    "on-tertiary-container": "#009668",
+                    "on-primary": "#ffffff",
+                    "outline": "#76777d",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "on-tertiary-fixed": "#002113",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#dae2fd",
+                    "secondary": "#0051d5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "32px",
+                    "sidebar-width": "280px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "container-max-width": "1280px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "numeric-data": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-xl": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "numeric-data": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(49, 107, 243, 0.08), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(0, 81, 213, 0.05), transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary/20">
+<!-- Top Navigation Bar (Shared Component Reference) -->
+<header class="fixed top-0 left-0 w-full z-50 shadow-sm bg-surface">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max-width mx-auto h-20">
+<div class="flex items-center gap-3">
+<img alt="FXPRO INVEST Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMGZ_PsQ8VPD_Q9XR3LPJAKi2EhnleCrpYnFz7m97LXnlWL4k8qBJTiegadqU3oAkOC7r8FPvuYBSLBeELVJoyoHzqk8N7w2Cs66PTO8A02muTuuSVKE_Y_PbAvgbO89sZ4wRE9VIGWv9sRAxcsfQtcpBKXBs5LTEB-XilmdjvV8Gr_4xMYeTjAeflRRc2ut3fRCVFPUlMcD0v1cmzjFUATt4-yTcncU-DIdGgq40xVwjw7ML02zkT"/>
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">FXPRO INVEST</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors cursor-pointer" href="#how-it-works">How It Works</a>
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors cursor-pointer" href="#plan">Investment Plan</a>
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors cursor-pointer" href="#features">Features</a>
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors cursor-pointer" href="#security">Security</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-secondary cursor-pointer active:opacity-80 transition-all">notifications</button>
+<button class="bg-secondary text-on-secondary px-6 py-2.5 rounded-lg font-label-md hover:bg-secondary/90 transition-all shadow-md">Get Started</button>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden hero-gradient py-24 md:py-32">
+<div class="max-w-container-max-width mx-auto px-margin-desktop flex flex-col lg:flex-row items-center gap-16">
+<div class="w-full lg:w-1/2 space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container/10 text-secondary rounded-full border border-secondary/20">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-md uppercase tracking-wider font-bold">Institutional Grade Platform</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-background leading-tight">
+                        Manage Your Investments with <span class="text-secondary">Greater Clarity</span>
+</h1>
+<p class="text-body-lg text-on-surface-variant max-w-xl">
+                        A sophisticated fintech ecosystem designed for serious investors. Real-time analytics, institutional security, and transparent yields in one seamless interface.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary-container text-on-primary px-8 py-4 rounded-xl font-headline-md text-body-md hover:opacity-90 transition-all flex items-center gap-2 group shadow-xl">
+                            Start Investing 
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="bg-surface-container-highest/50 text-on-surface px-8 py-4 rounded-xl font-headline-md text-body-md hover:bg-surface-container-highest transition-all border border-outline-variant/30">
+                            View Live Demo
+                        </button>
+</div>
+<div class="flex items-center gap-6 pt-8 border-t border-outline-variant/20">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-dim" data-alt="Close-up professional headshot of a confident female financial advisor in her 40s, soft studio lighting, clean background, modern professional attire, royal blue accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4cw9w6N-QUP6C3KkCrgdgRyr_VGcaWqmgwrHgLo6Bq20JrkAFYDG3XxrRZ1xFz9L7A1BWMXv1s7irZ4h07umP_TcG15GIlm59D1GpHTvBILkKTri-db0rUf0B8c4KVE0Gl32IR48HOM-ykM48WPCDE0-G2GlEJmFFDypX_wjFQDsMUYheJpeu4kWulgsrC0JQ9ZBFT_pno5aQ4pBxVlGzGe5RZ338rS2d_BPnb33aoe5Q80_ia3iE')"></div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-dim" data-alt="Close-up professional headshot of a smiling male investment consultant in his 30s, natural daylight, urban office setting background, wearing a charcoal suit." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCVHrDakBWGnx07U1-dcfSqEOvGvZFtNC9ReAcDsRJ3zKdLUnNNZYcFbw0evSLNX19n8r-uwHdEJG3E8TG9k0riABGWpEvijzAzUTDzGbxjF5KXxLH4g6dffK3xRergB6_AQvwmhwSg7vDixGYjzEXEfscJgan1OqkkXlCamsrOMWBceJv_1eAnRwLx_X6JeCunUJwB6oyLTVRLFWXwiCfK_nI1XX3N2l7FR_0dNVMTBb_QSjF6SNgw')"></div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-dim" data-alt="Close-up professional headshot of an Asian female portfolio manager with glasses, neutral expression, high-end professional corporate photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcfRd13AmvItnPcs9xBmUYDT1vWPapaxtRPR4m4Jomjnh_EiEBstj9wBYeut6jxBh9lzBcPOt7CqupRe6u31_uLOo15nTR1YoFXYySx7BKvIJCVg5dL8Gnv3X2Hhz1Q9v8UTMCRZK9_lh_8UvdEHUYnIGcCAX28mZF7UPDia6QG30NgkQIseApx-8fDutNhevWZn98RH2wSlbDSFGkj10YyBmrsIfXUBge0MKfflGMkilEvabj1kGD')"></div>
+</div>
+<p class="text-body-sm text-on-surface-variant">Trusted by <span class="font-bold text-on-surface">15,000+</span> global investors</p>
+</div>
+</div>
+<!-- High-fidelity Dashboard Preview -->
+<div class="w-full lg:w-1/2 relative animate-in fade-in slide-in-from-right-8 duration-1000">
+<div class="relative z-10 rounded-2xl shadow-2xl overflow-hidden border border-white/50 glass-card">
+<div class="bg-primary-container p-4 flex items-center justify-between">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error/50"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-fixed-dim/50"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim/50"></div>
+</div>
+<div class="text-[10px] text-on-primary-container/50 font-mono">FXPRO_SECURE_PORTAL_V2.0</div>
+</div>
+<div class="p-6 bg-surface space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-xl bg-white shadow-sm border border-outline-variant/10">
+<p class="text-label-md text-on-surface-variant mb-1">Total Balance</p>
+<h3 class="text-headline-md font-bold text-secondary">$124,592.00</h3>
+<p class="text-body-sm text-on-tertiary-container flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12.5% this month
+                                    </p>
+</div>
+<div class="p-4 rounded-xl bg-white shadow-sm border border-outline-variant/10">
+<p class="text-label-md text-on-surface-variant mb-1">Weekly Profit</p>
+<h3 class="text-headline-md font-bold text-on-surface">$14,951.04</h3>
+<div class="w-full h-1.5 bg-surface-container rounded-full mt-3">
+<div class="w-3/4 h-full bg-secondary rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="h-40 w-full bg-surface-container-low rounded-xl flex items-end p-4 gap-2">
+<div class="w-full bg-secondary/20 rounded-t-sm" style="height: 40%"></div>
+<div class="w-full bg-secondary/30 rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-secondary/50 rounded-t-sm" style="height: 45%"></div>
+<div class="w-full bg-secondary/70 rounded-t-sm" style="height: 80%"></div>
+<div class="w-full bg-secondary rounded-t-sm" style="height: 95%"></div>
+<div class="w-full bg-secondary/60 rounded-t-sm" style="height: 65%"></div>
+<div class="w-full bg-secondary/40 rounded-t-sm" style="height: 50%"></div>
+</div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -bottom-10 -left-10 w-60 h-60 bg-tertiary-fixed-dim/10 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</section>
+<!-- Trust Indicators -->
+<section class="py-12 bg-white">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex items-center gap-4 p-6 rounded-2xl hover:bg-surface-container-low transition-colors">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]">shield_person</span>
+</div>
+<div>
+<h4 class="font-headline-md text-body-md font-bold">Secure Infrastructure</h4>
+<p class="text-body-sm text-on-surface-variant">Bank-grade 256-bit AES encryption</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-6 rounded-2xl hover:bg-surface-container-low transition-colors">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]">visibility</span>
+</div>
+<div>
+<h4 class="font-headline-md text-body-md font-bold">Absolute Transparency</h4>
+<p class="text-body-sm text-on-surface-variant">Real-time ledger audit trails</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-6 rounded-2xl hover:bg-surface-container-low transition-colors">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]">headset_mic</span>
+</div>
+<div>
+<h4 class="font-headline-md text-body-md font-bold">Priority Support</h4>
+<p class="text-body-sm text-on-surface-variant">24/7 dedicated account desk</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-24 bg-surface" id="how-it-works">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="text-center mb-16 space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Getting Started is Simple</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">Follow our streamlined onboarding process to activate your investment portfolio in minutes.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+<!-- Connector Line (Desktop) -->
+<div class="hidden md:block absolute top-12 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-outline-variant to-transparent -z-10"></div>
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center text-secondary font-bold text-xl border border-outline-variant/10 group-hover:bg-secondary group-hover:text-white transition-all duration-300">1</div>
+<h4 class="font-bold text-on-background">Create Account</h4>
+<p class="text-body-sm text-on-surface-variant px-4">Register with your secure credentials and complete verification.</p>
+</div>
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center text-secondary font-bold text-xl border border-outline-variant/10 group-hover:bg-secondary group-hover:text-white transition-all duration-300">2</div>
+<h4 class="font-bold text-on-background">Choose Plan</h4>
+<p class="text-body-sm text-on-surface-variant px-4">Select the investment amount that aligns with your financial goals.</p>
+</div>
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center text-secondary font-bold text-xl border border-outline-variant/10 group-hover:bg-secondary group-hover:text-white transition-all duration-300">3</div>
+<h4 class="font-bold text-on-background">Fund Wallet</h4>
+<p class="text-body-sm text-on-surface-variant px-4">Securely deposit funds using our encrypted payment gateway.</p>
+</div>
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center text-secondary font-bold text-xl border border-outline-variant/10 group-hover:bg-secondary group-hover:text-white transition-all duration-300">4</div>
+<h4 class="font-bold text-on-background">Track Growth</h4>
+<p class="text-body-sm text-on-surface-variant px-4">Monitor your weekly 12% returns via the investor portal.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Investment Plan Summary -->
+<section class="py-24 bg-white relative overflow-hidden" id="plan">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#0051d5 1px, transparent 0); background-size: 40px 40px;"></div>
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="w-full lg:w-1/2 space-y-6">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Optimized Capital Growth</h2>
+<p class="text-body-lg text-on-surface-variant">Our flagship investment algorithm is designed to capitalize on market volatility while preserving principal capital. We offer a single, high-performance tier to ensure maximum focus on asset management.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-body-md">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+                                Fully automated asset allocation
+                            </li>
+<li class="flex items-center gap-3 text-body-md">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+                                Compound interest options available
+                            </li>
+<li class="flex items-center gap-3 text-body-md">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+                                No hidden fees or exit penalties
+                            </li>
+</ul>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="bg-primary-container rounded-3xl p-8 text-on-primary shadow-2xl relative overflow-hidden">
+<!-- Glow effect -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-secondary rounded-full blur-[100px] opacity-30"></div>
+<div class="relative z-10 space-y-8">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-md font-bold mb-1">Standard Alpha</h3>
+<p class="text-on-primary-container text-body-sm">Weekly Yield Generation</p>
+</div>
+<div class="bg-secondary px-4 py-2 rounded-xl text-headline-md font-bold">12% <span class="text-label-md font-normal opacity-70">/wk</span></div>
+</div>
+<div class="grid grid-cols-2 gap-6 border-y border-on-primary-fixed-variant py-8">
+<div>
+<p class="text-label-md text-on-primary-container uppercase tracking-widest mb-2">Minimum Entry</p>
+<p class="text-headline-md font-bold">$1,000</p>
+</div>
+<div>
+<p class="text-label-md text-on-primary-container uppercase tracking-widest mb-2">Maximum Entry</p>
+<p class="text-headline-md font-bold">$10,000</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-body-sm">
+<span>Payout Frequency</span>
+<span class="font-bold">Every 7 Days</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span>Capital Return</span>
+<span class="font-bold">After 30 Days</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span>Maintenance Fee</span>
+<span class="font-bold text-tertiary-fixed-dim">0.00%</span>
+</div>
+</div>
+<button class="w-full bg-secondary-fixed text-on-secondary-fixed font-bold py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
+                                    Open Investment Account
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 bg-surface" id="features">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="text-center mb-16 space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Advanced Ecosystem</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">Technology that puts the power of a hedge fund in your pocket.</p>
+</div>
+<div class="bento-grid">
+<!-- Feature 1 -->
+<div class="col-span-12 md:col-span-7 bg-white rounded-3xl p-8 shadow-sm border border-outline-variant/10 group hover:shadow-lg transition-shadow">
+<div class="flex flex-col h-full justify-between gap-8">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-secondary text-4xl">analytics</span>
+<h4 class="font-headline-md text-on-background">Predictive Analytics</h4>
+<p class="text-body-md text-on-surface-variant">Our AI engines scan millions of data points across global markets to identify high-probability yield opportunities before they emerge.</p>
+</div>
+<div class="h-48 rounded-xl bg-surface-container overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Abstract 3D digital visualization of complex financial data flowing like a liquid stream of golden and blue particles, high-resolution bokeh effect, modern corporate technological aesthetic, clean lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-yagXqQhd6LOst4L8FwO2yEu5UZI_rzBrR8hsWkPVKlNa88KP1uYdPDRLMJFEV18v7Rvtc4C2FMN5NC3N7Anus5lJq42f5SyjsDAQmBBVULKSpMvzBtauOaAfGF8BEXtNRH-xoSoZeie3x9Z-8c6Kf2VkCZXrrUTWXiFcNXYrBXQXQUc10Bq2OKUf4m8R-MEvpcPNQbuwVrMBUsnjiJPkzwvgx7Y6ufJ6ag65gtFf_OhaU5a_1UCr')"></div>
+</div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="col-span-12 md:col-span-5 bg-primary-container rounded-3xl p-8 shadow-sm text-on-primary group hover:shadow-lg transition-shadow">
+<div class="flex flex-col h-full justify-between">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-4xl">lock_open</span>
+<h4 class="font-headline-md">Zero-Knowledge Security</h4>
+<p class="text-body-md text-on-primary-container">We utilize ZK-proofs to ensure your identity and assets remain private while maintaining full regulatory compliance.</p>
+</div>
+<div class="mt-12 flex justify-end">
+<span class="material-symbols-outlined text-[80px] text-on-primary-fixed-variant/20 group-hover:text-secondary/20 transition-colors">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="col-span-12 md:col-span-5 bg-secondary-container/5 rounded-3xl p-8 border border-secondary/10 group hover:bg-secondary-container/10 transition-colors">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-secondary text-4xl">currency_exchange</span>
+<h4 class="font-headline-md text-on-background">Instant Liquidity</h4>
+<p class="text-body-md text-on-surface-variant">Convert your earnings to over 40+ fiat and digital currencies instantly with guaranteed market rates.</p>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="col-span-12 md:col-span-7 bg-white rounded-3xl p-8 shadow-sm border border-outline-variant/10 flex items-center gap-8">
+<div class="space-y-4 w-2/3">
+<h4 class="font-headline-md text-on-background">Multi-Platform Access</h4>
+<p class="text-body-md text-on-surface-variant">Access your portfolio anywhere with our seamless desktop and mobile applications, synchronized in real-time.</p>
+</div>
+<div class="w-1/3 h-32 bg-surface-container-high rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-5xl">devices</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Security Focused Section -->
+<section class="py-24 bg-white" id="security">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="bg-surface-container-low rounded-[40px] p-12 md:p-20 overflow-hidden relative">
+<div class="absolute right-0 top-0 w-1/3 h-full hidden lg:block">
+<div class="w-full h-full bg-cover bg-center opacity-20" data-alt="Ultra-modern server room with glowing blue LED lights, high-tech cooling systems, symbolizing data center security and institutional financial infrastructure, clean and sterile environment, 8k resolution cinematic lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA8G88CPUEfvLJ4IzwyYqQhGLuVG7eo0kyDfotnTuYKfxJb6KMgJnfk88TWiX2bVBnG5UliNg2-JqZs_A6S1oe1ZlEIN_CuqBV8YRGt-tVLfowzjk1q_I_hy15Jxk8T09ZltwdjqM7w8o_hYai7sYSDbGwAllDhS__VWMu_78e44leSomIMsKKyR_dKJxFNsUjsWdtUrE9sqt36gS9EtnmI2c_UhcQktOI-h-nv6EHcGp9yExS5ML1p')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-low via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-2xl space-y-8">
+<div class="inline-block px-4 py-1.5 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-label-md font-bold uppercase tracking-wider">Security First</div>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Your assets are protected by multiple layers of defense.</h2>
+<p class="text-body-lg text-on-surface-variant">We partner with global leaders in cybersecurity and digital asset custody to provide a fortress-like environment for your capital.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
+<div class="space-y-2">
+<h5 class="font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">database</span>
+                                    Cold Storage
+                                </h5>
+<p class="text-body-sm text-on-surface-variant">98% of assets are kept in geographically distributed offline vaults.</p>
+</div>
+<div class="space-y-2">
+<h5 class="font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">security_update_good</span>
+                                    2FA &amp; Biometrics
+                                    </h5>
+<p class="text-body-sm text-on-surface-variant">Mandatory multi-factor authentication for all withdrawal requests.</p>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                            Review Our Security Protocol
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary-container"></div>
+
+<div class="max-w-container-max-width mx-auto px-margin-desktop relative z-10 text-center space-y-8">
+<h2 class="font-headline-xl text-headline-xl text-on-primary">Ready to Elevate Your Portfolio?</h2>
+<p class="text-body-lg text-on-primary-container max-w-2xl mx-auto">Join thousands of high-net-worth investors who rely on FXPRO INVEST for clear, consistent, and secure financial growth.</p>
+<div class="pt-8">
+<button class="bg-white text-primary-container px-12 py-5 rounded-2xl font-headline-md text-body-md font-bold hover:bg-secondary-fixed transition-all shadow-2xl">
+                        Open Your Account Now
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Professional Footer -->
+<footer class="bg-on-primary-fixed text-on-primary-fixed-variant pt-20 pb-10">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1 space-y-6">
+<div class="flex items-center gap-3">
+<img alt="FXPRO INVEST Logo" class="h-8 w-8 brightness-0 invert opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMGZ_PsQ8VPD_Q9XR3LPJAKi2EhnleCrpYnFz7m97LXnlWL4k8qBJTiegadqU3oAkOC7r8FPvuYBSLBeELVJoyoHzqk8N7w2Cs66PTO8A02muTuuSVKE_Y_PbAvgbO89sZ4wRE9VIGWv9sRAxcsfQtcpBKXBs5LTEB-XilmdjvV8Gr_4xMYeTjAeflRRc2ut3fRCVFPUlMcD0v1cmzjFUATt4-yTcncU-DIdGgq40xVwjw7ML02zkT"/>
+<span class="font-headline-md text-body-md font-bold text-white">FXPRO INVEST</span>
+</div>
+<p class="text-body-sm leading-relaxed">The premier choice for sophisticated digital asset management and institutional-grade investment solutions.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-on-primary-fixed-variant/30 flex items-center justify-center hover:border-white hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
+<a class="w-10 h-10 rounded-full border border-on-primary-fixed-variant/30 flex items-center justify-center hover:border-white hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">chat</span></a>
+<a class="w-10 h-10 rounded-full border border-on-primary-fixed-variant/30 flex items-center justify-center hover:border-white hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">mail</span></a>
+</div>
+</div>
+<div class="space-y-6">
+<h5 class="text-white font-bold uppercase tracking-wider text-label-md">Platform</h5>
+<ul class="space-y-3 text-body-sm">
+<li><a class="hover:text-white transition-colors" href="#">Dashboard Overview</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Alpha Strategies</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Fee Structure</a></li>
+<li><a class="hover:text-white transition-colors" href="#">API Access</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h5 class="text-white font-bold uppercase tracking-wider text-label-md">Company</h5>
+<ul class="space-y-3 text-body-sm">
+<li><a class="hover:text-white transition-colors" href="#">About FXPRO</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Institutional</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Term of Service</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h5 class="text-white font-bold uppercase tracking-wider text-label-md">Support</h5>
+<ul class="space-y-3 text-body-sm">
+<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Security Audit</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Contact Desk</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Risk Assessment</a></li>
+</ul>
+</div>
+</div>
+<!-- Risk Disclosure -->
+<div class="border-t border-on-primary-fixed-variant/20 pt-10">
+<div class="bg-surface-container-low/5 p-8 rounded-2xl mb-8">
+<h6 class="text-white text-label-md font-bold mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-sm">warning</span>
+                        Important Risk Disclosure
+                    </h6>
+<p class="text-[11px] leading-relaxed opacity-60">
+                        Investment in digital assets involves significant risk. The value of investments and the income from them can fall as well as rise and you may not get back the amount originally invested. Past performance is not a reliable indicator of future results. Yields are generated through sophisticated market strategies and are subject to market volatility. FXPRO INVEST does not provide tax, legal, or investment advice. Investors should consult with their professional advisors prior to making any investment decision. Any information provided on this site is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security.
+                    </p>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] opacity-40">
+<p>© 2024 FXPRO INVEST LTD. All rights reserved.</p>
+<p>Financial Services License #8421-993-FXP</p>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and scroll effects
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        });
+    </script>
+</body></html>
