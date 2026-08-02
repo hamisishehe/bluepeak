@@ -7,6 +7,7 @@ import { User } from '../../users/user.entity';
 async function seedAdmins() {
   await dataSource.initialize();
   const users = dataSource.getRepository(User);
+  const seeded: string[] = [];
   const defaults = [
     {
       email: 'investor@bluepeakcapital.com',
@@ -35,6 +36,7 @@ async function seedAdmins() {
       if (account.investmentBalance !== undefined) existing.investmentBalance = account.investmentBalance;
       if (account.totalProfit !== undefined) existing.totalProfit = account.totalProfit;
       await users.save(existing);
+      seeded.push(`${existing.email} updated`);
     } else {
       let referralCode = account.referralCode;
       let suffix = 1;
@@ -42,7 +44,7 @@ async function seedAdmins() {
         referralCode = `${account.referralCode}${suffix}`;
         suffix += 1;
       }
-      await users.save(users.create({
+      const created = await users.save(users.create({
         ...account,
         referralCode,
         passwordHash: await bcrypt.hash('ChangeMe123!', 12),
@@ -50,9 +52,11 @@ async function seedAdmins() {
         emailVerified: true,
         mustChangePassword: account.mustChangePassword ?? true,
       }));
+      seeded.push(`${created.email} created`);
     }
   }
 
+  console.log(`Seed complete: ${seeded.join(', ')}`);
   await dataSource.destroy();
 }
 
