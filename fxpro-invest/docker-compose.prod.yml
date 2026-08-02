@@ -1,6 +1,6 @@
 services:
   backend:
-    command: npm run start
+    command: sh -c "npm run migration:run && npm run start"
     environment:
       FRONTEND_URL: https://bluepeak-capital.online
       FRONTEND_URLS: https://bluepeak-capital.online

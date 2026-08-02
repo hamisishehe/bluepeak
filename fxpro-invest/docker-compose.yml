@@ -21,7 +21,7 @@ services:
     environment:
       DATABASE_URL: postgres://fxpro:fxpro_password@postgres:5432/fxpro_invest
       FRONTEND_URL: http://localhost:3000
-      FRONTEND_URLS: http://localhost:3000,http://127.0.0.1:3000,http://bluepeak-capital.online:3000
+      FRONTEND_URLS: http://localhost:3000,http://127.0.0.1:3000,http://bluepeak-capital.online:3000,https://bluepeak-capital.online
     command: sh -c "npm run migration:run && npm run seed:users && npm run start"
     ports:
       - "4000:4000"
