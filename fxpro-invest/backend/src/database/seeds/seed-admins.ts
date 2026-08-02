@@ -23,8 +23,19 @@ async function seedAdmins() {
   ];
 
   for (const account of defaults) {
-    const exists = await users.exists({ where: { email: account.email } });
-    if (!exists) {
+    const existing = await users.findOne({ where: { email: account.email } });
+    if (existing) {
+      existing.fullName = account.fullName;
+      existing.role = account.role;
+      existing.status = UserStatus.ACTIVE;
+      existing.emailVerified = true;
+      existing.passwordHash = await bcrypt.hash('ChangeMe123!', 12);
+      existing.mustChangePassword = account.mustChangePassword ?? true;
+      if (account.availableBalance !== undefined) existing.availableBalance = account.availableBalance;
+      if (account.investmentBalance !== undefined) existing.investmentBalance = account.investmentBalance;
+      if (account.totalProfit !== undefined) existing.totalProfit = account.totalProfit;
+      await users.save(existing);
+    } else {
       let referralCode = account.referralCode;
       let suffix = 1;
       while (await users.exists({ where: { referralCode } })) {
