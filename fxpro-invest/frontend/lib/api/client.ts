@@ -1,7 +1,15 @@
 import axios from 'axios';
 
+function apiBaseUrl() {
+  const configured = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+  if (typeof window === 'undefined') return configured;
+  const pointsToLoopback = configured.includes('localhost') || configured.includes('127.0.0.1');
+  if (window.location.protocol === 'https:' && pointsToLoopback) return window.location.origin;
+  return configured;
+}
+
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000',
+  baseURL: apiBaseUrl(),
   withCredentials: true,
 });
 
@@ -38,7 +46,7 @@ api.interceptors.response.use(
     }
     error.config._retry = true;
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'}/api/v1/auth/refresh-token`, { refreshToken });
+      const response = await axios.post(`${apiBaseUrl()}/api/v1/auth/refresh-token`, { refreshToken });
       localStorage.setItem('fxpro_access_token', response.data.accessToken);
       localStorage.setItem('fxpro_refresh_token', response.data.refreshToken);
       error.config.headers.Authorization = `Bearer ${response.data.accessToken}`;
